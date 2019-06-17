@@ -1,3 +1,3 @@
 # algorithm
-The Exercises are from LeetCode https://leetcode.com/
+The exercises are from LeetCode https://leetcode.com/
 
