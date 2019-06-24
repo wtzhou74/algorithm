@@ -55,7 +55,7 @@ def mySqrt1(x) -> int:
     while start <= end:
         mid = start + (end -start) // 2
         # x is perfect square
-        if mid * mid == x:
+        if mid * mid == x: # only conside x / 2 elements, refer to mySqrt(x)
             return mid
         # since we need FLOOR, we update answer when mid * mid is smaller than x
         # and move closer to sqrt(x)
