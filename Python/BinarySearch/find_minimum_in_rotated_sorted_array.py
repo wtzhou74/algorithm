@@ -6,7 +6,7 @@
 # 
 # Find the minimum element.
 # 
-# You may assume no duplicate exists in the array.
+# You may assume NO DUPLICATEE exists in the array.
 # 
 # Example 1:
 # 
@@ -29,6 +29,7 @@ def findMin(nums) -> int:
             left = mid + 1
         else:
             right = mid # mid might be pivot
+    return nums[left]
             
 def findMin0(nums) -> int:
     if not nums:
