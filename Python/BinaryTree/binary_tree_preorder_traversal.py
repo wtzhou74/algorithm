@@ -139,7 +139,7 @@ def stackSol(root) -> list:
         else:
             stack.append((root.right, False))
             stack.append((root.left, False))
-            stack.append(root, True)
+            stack.append((root, True))
     return res
             
 

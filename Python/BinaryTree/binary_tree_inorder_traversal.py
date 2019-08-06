@@ -71,7 +71,7 @@ def morriesSol(root):
                 # move next layer
                 curr = curr.left
             else:
-                pre.right = None
+                pre.right = None # pre.right point to itself, set None
                 res.append(curr.val)
                 curr = curr.right
     return res
@@ -87,6 +87,7 @@ def findPredecessor(node):
 if __name__ == '__main__':
     root = dt.deserialize('[2,1,3,0,7,9,1,2,null,1,0,null,null,8,8,null,null,null,null,7]')
     # root = dt.deserialize('[1,null,2,3]')
-    res = morriesSol(root)
+    # root = dt.deserialize('[1,2,3]')
+    res = stackSol2(root)
     for i in res:
         print(i)
