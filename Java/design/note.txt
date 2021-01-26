@@ -1,0 +1,1 @@
+Applying existing Data Structure, e.g. Doubly Linked List, Queue, Array, PriorityQueue, etc. to realize unknown DS and their corresponding functions.

@@ -1,0 +1,15 @@
+Comparison of NumberOfIsland.java and WordSearch.java
+===> BACKTRACKING
+===> !!!!!!!Word.equals(solution)  => Get TLE for some cases since for each solution, it MUST collect word.length's LETTERs.
+============================> REPLACEMENT: String to Array => Check EACH letters one by one, the IDEAL case is check ONE letter.
+
+2D Array ===> Graph   ======> CourseSchedule.java
+
+Tarjan Algo:  =====>  CriticalRouters.java
+
+
+===> One level equals a step/minute , rather than a single movement, e.g. up/down/left/right
+	====>Minimum Distance from one point to another =====> BFS  ========> Calculate the number of LEVEL =======> RottingOranges.java; ZombieInMatrix.java; TreasureIsland.java
+	
+
+Number of Islands 的问题 ==> NumberOfIslands.java; NumberOfDistinctIslands.java

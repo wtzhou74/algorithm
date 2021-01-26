@@ -20,7 +20,9 @@ public class Trie {
                     continue;
                 } else {
                     TrieNode node = new TrieNode(word.charAt(i));
+                 // add a new node to the current children map
                     curr.children.put(word.charAt(i), node);
+                    // now the curr node is the new added node
                     curr = curr.children.get(word.charAt(i));
                 }
             }
@@ -54,6 +56,7 @@ public class Trie {
                 curr = curr.children.get(c);
             }
         }
+        // ASSUMING ALL BRANCH IS A WORD.
         return true;
     }
 }

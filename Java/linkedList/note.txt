@@ -1,0 +1,42 @@
+- Head是指向第一个node的指针； 所以 head.val就是第一个Node.val； 不是第一个 node.next.val
+	但是新建 auxHead, 或auxPre时候，不能 newHead = null newHead.next = node ==> nullPointerException;而是正常 new Node(-1),然后next到一个node
+- 善于借助 dummy node   ===> PartitionList.java
+- 把图画出来
+
+A LINEAR data structure (VALUE FIELD + REFERENCE/POINTER FIELD(s))
+Each element in the linked list is a separate object while all the objects are linked together by the REFERENCE field in each element.
+Singly linked list
+Doubly linked list (each element has two reference fields, and each of them has two pointers)
+
+DEFINITION of singly linked list:
+- SinglyLinkedList{
+	int val;
+	SinglyLinkedList next;
+	SinglyLinkedList(int x) {x = val;}
+	}
+	// Head: the first node (It is a POINTER to the first node)
+	// are not able to access a random element in a singly linked list in CONSTANT time, we have to traverse from the head node one by one.
+	// the element cannot be accessed via INDEX
+	// INSERT and DELETE - benefit of the linked list - 
+	// INSERT - Done in O(1) time complexity
+	// DELETE - Done in O(n) since we need to find Prev node, but O(1) space complexity for pointer
+	
+Singly linked list: traverse the list in one direction, so, slow-fast-pointer technique
+
+Cycle problem: two pointer technique
+	1. If there is no cycle, the fast pointer will stop at the end of the linked list.
+	2. If there is a cycle, the fast pointer will eventually meet with the slow pointer.
+	
+TWO-POINTER Summary
+- always examine if the node is null before you call the next
+- carefully define the end conditions by your loop.
+
+
+WHEN TO CREATE NEW NODES or process in PLACE
+==> be careful to generate infinite loop if using extra space  ==> OddEvenLinkedList.iava
+===> MUST Create NEW NODEs if creating new LinkedList, rather than processing in-place => might cause infinite loop
+
+
+
+------------
+FLEXIBLE USE OF POINTERs ===> e.g. TWO-POINTER => SAME STEP / FAST-SLOW        !!!!!!!!!!!!!

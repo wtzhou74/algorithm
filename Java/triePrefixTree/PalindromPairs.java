@@ -37,7 +37,8 @@ public class PalindromPairs {
 //                    // reduct replication with str2.length != 0 since if == 0, then will get same pair, it can be done with SET
 //                    if (map.containsKey(revOfStr1) && map.get(revOfStr1) != i && str2.length() != 0) {
 //                        List<Integer> temp = new ArrayList<>();
-//                        temp.add(i);
+//                        // NOTICE the sequence
+//					  	  temp.add(i);
 //                        temp.add(map.get(revOfStr1));
 //                        result.add(temp);
 //                    }

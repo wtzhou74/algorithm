@@ -1,0 +1,39 @@
+Solve basic queue-related problems, especially BFS;
+Understand how system stack helps you when you solve problems using DFS and other RECURSION algorithms;
+
+QUEUE:
+- A straightforward way to implement queue. DRAWBACK: space wasted -> circular queue
+- Circular queue (ring buffer)
+	- Fixed-size array, two-pointers  -> reuse the wasted storage
+	- Front and Rear (peek() - retrieve the first element WITHOUT removing)
+	- enqueue, dequeue (offer(), poll())
+	- Empty or full
+	
+- to process the elements in order, using queue might be a good choice
+- BFS to find the shortest path from the root to the target node
+	- never visit a node twice( check cycle )-> put visit nodes in HashSet() / Set()
+	
+STACK:
+- Stack s = new Stack();
+- PUSH, POP (REMOVING), Peek()-check the top element without removing
+
+DFS:
+First push the root node to the stack; then we try the first neighbor B 
+and push node B to the stack; so on and so forth. When we reach the deepest node E, we need to trace back. 
+And when we trace back, we will pop the deepest node from the stack which is actually the 
+last node pushed to the stack.
+The processing order of the nodes is the exact opposite order as how they were added to the stack, 
+which is Last-in-First-out (LIFO). That's why we use a stack in DFS.
+REFERENCE TO: https://leetcode.com/explore/learn/card/queue-stack/232/practical-application-stack/1377/
+
+Different from BFS, the nodes you visit earlier might not be the nodes which are closer to the root node. 
+As a result, the first path you found in DFS might not be the shortest path.
+
+RECURSION is a way to implement DFS (using implicit stack), so for some cases, RECUSION is used to realize DFS.
+----!!!!!!!! 1) end condition 2) situations, refer to nums of island, target sum
+
+The size of stack is exactly the depth of DFS when one way found
+
+The advantage of the recursion solution is that it is easier to implement. However, 
+there is a huge disadvantage: if the depth of recursion is too high, you will suffer from stack overflow. 
+In that case, you might want to use BFS instead or implement DFS using an explicit stack.

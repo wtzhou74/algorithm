@@ -1,0 +1,84 @@
+Solving it IN-PLACE  ====> Applying FLAGs  ==> Indicating ORIGINAL value == > GameOfLife.java, SetMatrixZeros.java
+
+Sub-Matrix ==> GameOfLife.java
+
+MATRIX ==> Graph ==> NumOfIslands.java; SurroundedRegions.java
+
+对角线分两种， 正/反对角线
+	- 反对角线  row + col = n - 1   =====> DesignTicTacToe.java
+
+
+Mark需要处理的 cell   1） 借助辅助Matrix, e.g. List<List<Integer>>; 2) 把原有值 取负
+	====> CandyCrush.java
+	
+	
+找 Matrix（图，树） 中的某个值时 ===> 二分法  ==> 然后 图遍历（比如递归） 看二分法取到的值是否满足条件 !!!!!
+====> PathWithMaximumMinimumValue.java
+
+对有些判断路径有无的，尤其是只需要判断其中一条就行的，注意！！！return true/false的时机
+	- PathWithMaximumMinimumValue.java
+
+Matrix [n*n] 的下标计算： ===> row 用 /n, col 用 %n
+- !!!!! “之”字型的，  ===> SnakesAndLadders.java
+	==> int quote = (cell - 1) / n;  (cell的position值是从1开始的，所以cell -1)
+        int remainder = (cell - 1) % n;
+        int row = n - quote - 1;
+        int col = 0;
+        if (row % 2 != n % 2) { // 不能简单 row % 2 ?= 0 来判断
+            col = remainder;
+        } else {
+            col = n - remainder - 1;
+        }
+
+
+对Matrix的走位   ===> SpiralOrder.java
+-------------------------------------------------	
+设置方向比较简洁的处理：
+
+int[][] dirs = new int[][]{{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
+for (int[] dir : dirs) {
+	int newX = x + dir[0];
+	int newY = y + dir[1];
+
+	if (newX >= 0 && newX < island.length && newY >= 0 && newY < island[0].length &&
+			island[newX][newY] != 'D' && !visited[newX][newY]) {
+		queue.add(new Coordinate(newX, newY));
+		visited[newX][newY] = true;
+	}
+}
+
+// 8个方向的
+int[][] dirs = new int[][] {
+            {-1, 0},
+            {1, 0},
+            {0, -1},
+            {0, 1},
+            {1, 1},
+            {-1, -1},
+            {1, -1},
+            {-1, 1}
+        };
+
+// alternative
+List<int[]> directions = Arrays.asList(
+            new int[] {1, 0},
+            new int[] {-1, 0},
+            new int[] {0, 1},
+            new int[] {0, -1}
+        );
+        
+        
+int[] cell = queue.poll();
+                int row = cell[0];
+                int col = cell[1];
+                for (int i = 0; i < directions.size(); i++) {
+                    int r = row + directions.get(i)[0];
+                    int c = col + directions.get(i)[1];
+                    if (r < 0 || r >= rooms.length ||
+                       c < 0 || c >= rooms[0].length ||
+                       rooms[r][c] != inf) {
+                        continue;
+                    }
+                    rooms[r][c] = count;
+                    queue.offer(new int[] {r, c});
+                }

@@ -1,0 +1,46 @@
+看懂并弄清楚题目要求 ==> 通过问来确认  ==> 形成思路再开始代码
+	==> BoatsToSavePeople.java
+	
+	
+数组（排序）的问题 （Two/Three Pointers）：
+	1） 计算（统计）个数 ===> 桶排序 (把元素值当索引，但只适合正数)， Map<Integer, Integer>
+	2) 排序： PriorityQueue, TreeMap, TreeSet 等等
+	
+	
+使用 nums[i + 1] > nums[i] （或者先 ++,再取值） 比较时，要注意 i+1 不能越界， 另外要注意走到最后一个的情况，
+	有的时候其结果要在while后计算
+	===> LongestMountainInArray.java
+
+Two-pointer:
+	- 起始点 / 终点
+	- 快 / 慢  ===> 判断环  LinkedListCycle.java；  CircularArrayLoop.java (如何设置slow/fast, 取next)
+	- 数组下标当指针用实现快慢判断环 ===> FindTheDuplicateNumber.java
+	- 相邻两个 ===> KDiffPairsInAnArray.java
+	
+	- 对LinkedList, 则可以是 Dummy Head Nodes  ===> PartitionList.java
+Multi-Pointers:
+	- SortColors.java
+	
+
+AtMostKDistinctIntegers ===> += (j - i + 1)
+	- 正好K个组合数 = 最多K个组合数 - 最多K-1个组合数
+	- SubarraysWithKDifferentIntegers.java (用2个SlidingWindows算法)
+	
+	
+在一组数中，只包括2种数值，问最长字串（允许包括K个另一个数）
+	Sliding window
+		==> refer to： https://leetcode.com/problems/max-consecutive-ones-iii/discuss/247564/JavaC%2B%2BPython-Sliding-Window
+		本题的本质是： 求最长字串，在最多只有一个(K个) 0的情况下
+	 ==a 》 1） A[i] - A[j] , if 之间 K <= 0， continue to increment j
+	 ==>2) A[i] - A[j] , if K > 0; continue to increment i
+	 ==> a 这里最后的 j - i只所以是最终结果， 因为在第一次包含有K个指定数时， 这时的 j-i是第一个可能结果，之后每增加 j 或 i, 其 windowSize肯定是 >= 当前的 j - i的
+	=========> MaxConsecutiveOnesII.java; MaxConsecutiveOnesIII.java
+	
+
+Great Sample:
+	- KDiffPairsInAnArray.java
+	- MinimumSizeSubarraySum.java
+	- CircularArrayLoop.java  (判断环，就可以考虑 slow,fast，但要注意如何 设置 slow,fast)
+	- CountUniqueCharactersOfAllSubstringsOfAGivenString.java
+	- SubstringWithConcatenationOfAllWords.java; MinimumWindowSubstring.java
+	

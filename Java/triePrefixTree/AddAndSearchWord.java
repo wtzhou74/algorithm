@@ -52,6 +52,7 @@ public class AddAndSearchWord {
         char c = chars[level];// the Index of String is the value of LEVEL
         if (c == '.') {
             for (TrieNode3 child : node.children) {
+            	// IF FALSE; DONOT RETURN, go check next one; return false only if all children are false
                 if (match(chars, child, level + 1)) return true; 
             }
             return false;

@@ -4,8 +4,10 @@ public class MaxDepthOfBinaryTree {
 
 	public int MaxDepthBottomUp(TreeNode root)
 	{
+		// BASE CASE
 		if (root == null) return 0;
 		
+		// RECURRENCE RELATION
 		// known left, right child
 		int left = MaxDepthBottomUp(root.left);
 		int right = MaxDepthBottomUp(root.right);

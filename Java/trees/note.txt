@@ -1,0 +1,34 @@
+BINARY SEARCH TREE:
+- The LEFT subtree of a node contains only nodes with keys LESS than the node's key (IF EQUAL, THEN NOT).
+- The RIGHT subtree of a node contains only nodes with keys GREATER than the node's key (IF EQUAL, THEN NOT).
+- The LEFT and RIGHT subtree each must also be a binary search tree. => RECURSIVE (in nature) => ValidateBST.java
+- EMPTY or a SINGLE node is a valid BST itself.
+
+左右子树 -- Bottom-Up/Up-down的选择  ===> LongestUnivaluePath.java
+
+递归 ===> 整体处理  ===>结束条件， &  自己调用自己处理（子）整体
+	- inorder/pre/postorder 递归
+	- inorder/pre/postorder + level 递归    ===> MaximumLevelSumOfABinaryTree.java
+
+树相关的DP问题 
+	- 前提是不需要创建树，只是"计算个数"，比如 唯一数
+	- 定义一种基于树结构的关系，实现DP
+	- MinimumCostTreeFromLeafValues.java; UniqueBinarySearchTrees.java
+
+
+借助辅助节点，类似处理链表 ===> IncreasingOrderSearchTree.java
+
+	
+	
+	
+Samples:
+- BinaryTreeMaximumPathSum.java
+- MinimumCostTreeFromLeafValues.java
+- UniqueBinarySearchTrees.java; UniqueBinarySearchTreesII.java
+- ConstructBinaryTreeFromPreorderAndInorderTraversal.java
+- ConvertSortedArrayToBinarySearchTree.java; MaximumBinaryTree.java
+- CountCompleteTreeNodes.java
+- DistributeCoinsInBinaryTree.java; DiameterOfBinaryTree.java (Down-up recursively)
+- PopulatingNextRightPointersInEachNode.java (Up-down recursively)
+- LongestUnivaluePath.java
+- SplitBST.java

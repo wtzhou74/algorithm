@@ -63,4 +63,26 @@ public class RemoveNthFromEnd {
         return length;
     }
     
+    public Node sol3(Node head, int n) {
+        int len = 0;
+        Node temp = head;
+        while (temp != null) {
+            len++;
+            temp = temp.next;
+        }
+        if (n == len) head = head.next;
+        else {
+            // need to remove (len - n + 1)th element
+            temp = head;
+            int i = 0;
+            while (i < len - n - 1) {
+                temp = temp.next;
+                i++;
+            }
+            temp.next = temp.next.next;
+        }
+                
+        return head;
+    }
+    
 }

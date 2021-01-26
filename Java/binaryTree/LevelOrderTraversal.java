@@ -27,8 +27,8 @@ public class LevelOrderTraversal {
 		queue.offer(root);
 		while (!queue.isEmpty()){
 			List<Integer> level = new ArrayList<Integer>();
-			int size = queue.size();// number of elements of each level
-			// process each element for each level
+			int size = queue.size();// number of elements of current level
+			// process each element for current level
 			for (int i = 0; i < size; i++)
 			{
 				TreeNode node = queue.poll();
@@ -59,13 +59,45 @@ public class LevelOrderTraversal {
 	public void dfsTraversal (TreeNode node, List<List<Integer>> levels, int depth)
 	{
 		if (node == null) return;
-		if (depth >= levels.size()) levels.add(new LinkedList<Integer>());
+		if (depth >= levels.size()) levels.add(new LinkedList<Integer>()); // CREATE A NEW LEVEL
 		
 		levels.get(depth).add(node.val);
 		
-		dfsTraversal(node.left, levels, depth+1);
-		dfsTraversal(node.right, levels, depth+1);
+		// The following equals the above two elements
+//		List<Integer> levelNum ;
+//        if (depth == levels.size()) {
+//            levelNum = new ArrayList<>();
+//            levels.add(levelNum);
+//        } else {
+//            levelNum = list.get(level);
+//        }
+//        
+//        levelNum.add(node.val);
+		///----------end
+		
+//		dfsTraversal(node.left, levels, depth+1);
+//		dfsTraversal(node.right, levels, depth+1);
+		// OR
+		depth++;
+		dfsTraversal(node.left, levels, depth);
+		dfsTraversal(node.right, levels, depth);
 		
 		// TOP-DOWN : find maximum depth of path
+		
+	}
+	
+	public TreeNode generate() {
+		TreeNode root = new TreeNode(3);
+		root.left = new TreeNode(9);
+		root.right = new TreeNode(20);
+		root.right.left = new TreeNode(15);
+		root.right.right = new TreeNode(7);
+		return root;
+	}
+	
+	public static void main(String[] args) {
+		LevelOrderTraversal levelT = new LevelOrderTraversal();
+		TreeNode root = levelT.generate();
+		levelT.dfs(root);
 	}
 }

@@ -93,14 +93,23 @@ public class ReplaceWords {
     }
     
     public static void main(String[] args) {
+//    	String a  = "cat";
+//    	String b = "bat";
+//    	String c = "rat";
+//    	List<String> dic = new ArrayList<>();
+//    	dic.add(a);
+//    	dic.add(b);
+//    	dic.add(c);
+//    	String sentence = "the cattle was rattled by the battery";
+    	
     	String a  = "cat";
-    	String b = "bat";
+    	String b = "cabbage";
     	String c = "rat";
     	List<String> dic = new ArrayList<>();
     	dic.add(a);
     	dic.add(b);
     	dic.add(c);
-    	String sentence = "the cattle was rattled by the battery";
+    	String sentence = "the ca cattle was rattled by the cabbage";
     	
     	replaceWords(dic, sentence);
     	

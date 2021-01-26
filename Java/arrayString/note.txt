@@ -1,0 +1,38 @@
+String is immutable. You should create a new String if you want to modify it. And the time complexity for
+both finding operation and substring operation is O(n) (Note: time complexity of build-in operations should
+be considered when you compute the time complexity)
+	- Convert it to char array by toCharArray()
+	- StringBuilder (faster) / StringBuffer (thread safe)
+	
+	
+-- 判断括号（），{}，[]的情况， 1） 用 +/-,适用一对的，比如（）; 2) 用stack， 适用多对不同的，比如 （），{} ==> ValidParentheses.java
+	
+	
+	
+	
+----
+array.length;; list.size(),,, string.length(),,,
+
+TWO POINTER TECHNIQUE
+- Scenario 1: Iterate the array from two ends to the middle
+- Scenario 2: One slow-runner and one fast-runner at the same. => determine the movement strategy for both pointers
+
+
+BUCKET related algorithm => Valid Anagram
+
+
+--------
+INTEGER:
+- POP: int/10
+- PUSH: res * 10 + remainder
+
+When dealing INTEGER => overflow issue !!!! ReverseInteger.java
+
+// removing white-space at very beginning of the String
+	while (i < str.length() && str.charAt(i) == ' ') {
+            i++;
+        }
+        
+
+------        
+Finding the beginning of CONSECUTIVE SEQUENCE ===> !set.contains(num - 1) ===> LongestConsecutiveSequence.java

@@ -43,4 +43,47 @@ public class N_aryTreePostorder {
         Collections.reverse(result);
         return result;
     }
+    
+    public class Pair {
+        boolean visited;
+        Node node;
+        
+        public Pair(boolean visited, Node node) {
+            this.visited = visited;
+            this.node = node;
+        }
+    }
+    
+    // For post-order, when track back, we should recognize whether the node has been VISITED OR NOT, => define PAIR, MAP is not good option here
+    // Reference to POST-ORDER of BINARY TREE SEARCH
+    public List<Integer> sol3(Node root) {
+        if (root == null) return new ArrayList<>();
+        List<Integer> res = new ArrayList<>();
+        // recursive solution
+        //helper(root, res);
+        
+        // Map<boolean, Node> map = new HashMap<>();
+        Stack<Pair> stack = new Stack<>();
+        Pair pair = new Pair(false, root);
+        stack.push(pair);
+        while (!stack.isEmpty()) {
+            Pair temp = stack.peek();
+            if (!temp.visited) {
+                Node node = temp.node;
+                if (node.children != null) {
+                    for (int i = node.children.size() - 1; i >= 0; i--) {
+                        Pair child = new Pair(false, node.children.get(i));
+                        stack.push(child);
+                    }
+                }
+                temp.visited = true;
+            } else {
+                Pair p = stack.pop();
+                res.add(p.node.val);
+            }    
+            
+            
+        }
+        return res;
+    } 
 }

@@ -31,19 +31,15 @@ public class ReverseSinglyLinkedList {
 			return null;
 		}
 		
-		Node pre = null;
-		Node current = head;
-		Node nxt = current;
-		
-		while(current != null)
-		{
-			nxt = current.next;
-			current.next = pre;
-			pre = current;
-			current = nxt;
-		}
-		
-		return pre;
+		Node pre = null;// do not need to BREAK THE NEXT
+        Node curr = head;
+        while (curr != null) {// process each node one by one
+            Node temp = curr.next;
+            curr.next = pre;
+            pre = curr;
+            curr = temp;
+        }
+        return pre;
 		
 	}
 	
@@ -67,7 +63,17 @@ public class ReverseSinglyLinkedList {
         //The last node is always head.next since it will  be at the end of the  returned list.
         head.next.next = head;
 		//Set a null to the end of the current node.
-        //head.next = null;
+        head.next = null;
         return temp;
+    }
+    
+    public static void main(String[] args) {
+    	Node root = new Node(1);
+    	root.next = new Node(2);
+    	root.next.next = new Node(3);
+    	root.next.next.next = new Node(4);
+    	root.next.next.next.next = new Node(5);
+    	
+    	reverse_rec(root);
     }
 }

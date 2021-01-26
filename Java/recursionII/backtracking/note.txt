@@ -1,0 +1,107 @@
+COMPARING Combination.java WITH Permutations.java ; Subsets.java
+=====> For each solution, the i WONT go back to 0 => COMBINATION
+===============================> CAN go back to 0 => PERMUTATION
+
+1) 确定怎么遍历每个solution中潜在的element
+2) trackback ==> 删掉solution中最后的元素（如果需要visited重置为false的也需要做）
+
+- backtracking => DFS的过程， 一个个往桶里放（这里我们就得判断能不能往里加，比如是否visited），合适的放进去，
+	到找到solution或不能继续往下为止
+	同时不管找到没找到，都开始往回backtrack,通过比如从list移除最后一个元素，或者将visited
+	设置为unvisited等等，就是回到上一层，并跳过之前的看过的元素，并看有没有其他solution
+	类似于一个决策树， 从 [0, target]开始，一个个判断，include/exclude(1/0)往下 ===> PartitionToKEqualSumSubsets.java
+	
+for(i=start) backtrack过来的时候从start开始，即从某个元素开始一个个继续往下check剩余的元素
+for(i=0) backtrack过来要check的元素又从0开始  ===> PartitionToKEqualSumSubsets.java
+
+
+Sum of SubSet （subset是不连续的） 是一个典型的backtrack问题， 但也是DP问题
+
+
+
+Backtracking:
+- Backtracking is a general algorithm for finding all (or some) solutions to some computational problems 
+  (notably Constraint satisfaction problems or CSPs), which incrementally builds candidates to the solution 
+  and abandons a candidate ("backtracks") as soon as it determines that the candidate cannot lead to a valid solution. 
+- One can imagine the procedure of backtracking as the tree traversal. Starting from the root node, 
+  one sets out to search for solutions that are located at the leaf nodes. Each intermediate node represents a partial
+  candidate solution that could potentially lead us to a final valid solution. At each node, we would fan out to move 
+  one step further to the final solution, i.e. we iterate the child nodes of the current node. Once we can determine 
+  if certain node cannot possibly lead to a valid solution, we ABANDON the CURRENT node and BACKTRACK to its PARENT n
+  ode to explore other possibilities. It is due to this backtracking behaviour, the backtracking algorithms are often 
+  much FASTER than the BRUTE-FORCE search algorithm, since it ELIMINATEs many UNNECESSARY exploration. 
+ - Backtracking reduced the number of steps taken to reach the final result. This is known as PRUNING the recursion tree
+  because we don't take unnecessary paths. 
+  
+TEMPLATE:
+	def backtrack(candidate):
+	    if find_solution(candidate):
+	        output(candidate)
+	        return
+	    
+	    # iterate all possible candidates.
+	    for next_candidate in list_of_candidates:
+	        if is_valid(next_candidate):
+	            # try this partial candidate solution
+	            place(next_candidate)
+	            # given the candidate, explore further.
+	            backtrack(next_candidate)
+	            # backtrack; abondon our previous decision at the moment we decide to move on to the next candidate
+	            remove(next_candidate)
+	            
+	- Overall, the enumeration of candidates is done in two levels: 1). at the FIRST LEVEL, the function is implemented as RECURSION. 
+		At EACH OCCURRENCE OF RECURSION, the function is one step FURTHER TO THE FINAL SOLUTION.  
+		2). as the second level, within the recursion, we have an ITERATION that allows us to EXPLORE ALL CANDIDATES that are of the same 
+		progress to the final solution.	            
+ 
+	- The backtracking should happen at the level of the iteration within the recursion. 
+ 
+ NQueuesII.java
+ - Backtracking
+ - Set the ALGORITHM FLOW => place, check, etc.
+ - CheckValid based on question description => same column, row, diagonal, anti-diagonal
+ 
+ 
+ WELL-FORMED PARENTHESES: 
+ - open, close => similiar to the LEFT/RIGHT CHILD of TREE   => GenerateParentheses.java
+ - NUMBER of open/close to check BALANCE
+ 
+ LetterCombinationsOfAPhoneNumber.java !!!!!!!!
+ - Have MULTIPLE poll, and each item of candidate solution from each poll respectively. 
+ 
+
+--------
+Whenever solving a backtracking problem, there are 3 steps -
+
+	DECISION ( which is our recursion, when to recursive)
+	CONSTRAINTS; isValid()
+	GOAL; OR base case => when to complete (TWO BASE Cases: 1) reach the goal; 2) start next try)
+The following template can be used to solve such problems-
+
+	First, identify the BASE CASEs, which are our GOALs
+	Then identify how to fill up the specific values, that can be a cell value in case of sudoku or a column position of queens in N-Queens problem.
+	Then, APPLY the CONSTRAINTS, if the choice you made is valid, then its good, and we have got a partial/local answer, but if its not valid
+	we need to BACKTRACK our decision, which can be setting the cell EMPTY again in sudoku, or remove the column placements in N Queens problem.
+
+-- Extracted from LongestIncreasingSubsequence.java	
+	if (i == nums.length) {
+	    longest = Math.max(res.size(), longest);
+	    return;
+	}
+	// Since the number of remaining elements are less than the longest, no need to process.
+	// TLE occurs without this statment
+	if (res.size() + nums.length - i < longest) return;
+	int largecnt = 0;// LOCAL variable, EACH recursion will have a copy of largest
+	for (; i < nums.length; i++) {// the "EXTERNAL" i will be ADDED by 1 when one solution FOUND, which means, the "INNER" i reaches to nums.length
+	    if (res.size() == 0 || nums[i] > res.get(res.size() - 1)) {
+	    	largecnt++;
+	        res.add(nums[i]);
+	        backtrackingHelper(nums, res, i + 1);
+	        res.remove(res.size() - 1); // THINK ABOUT STACK
+	    }
+	    
+	}
+	// There are no items after current one bigger than current value. 
+	// i ISNOT EQUIVALENT TO nums.length, BUT we still need to keep this longest value
+	if (largecnt == 0)  // no needed for this statment
+		longest = Math.max(res.size(), longest);

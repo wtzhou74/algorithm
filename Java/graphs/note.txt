@@ -1,0 +1,87 @@
+对于图的遍历，一定要注意设置visited=true的顺序 ===> oa.amazon.NumberOfIslands.java
+
+Indegree/Outdegree 的用法   ====> FindTheTownJudge.java
+===> a用数组来记录值有时候更好  int[] outDegree; 下标即第几个Node，值则是outdegree, 然后O（N）取值，
+	不用Map,否则需要再排序  ==> FindEventualSafeStates.java  ==> 所以需要顺序输出指定点时可考虑用数组
+	
+- 对图（树）， 有时候需要考虑“森林”的情况， 从每个点开始 ===> IsGraphBipartite.java (求Island的个数的情况也是一种“森林”)
+
+- 无向图带权值，求最小cost ===> MST ==> Kruskal 算法 / Prim 算法 
+			 ===> OptimizeWaterDistributionInAVillage.java
+			 ===> ConnectingCitiesWithMinimumCost.java
+
+邻接列表构建图：
+	- 对无向图，先初始化List: NumberOfConnectedComponentsInAnUndirectedGraph.java
+	1）： Map<Integer, Set<Integer>> graph
+	2): List<List<Integer>> graph
+	3): List<Integer>[] graph
+	
+	对用 Map 
+		=> graph.computeIfAbsent(equation.get(0), k -> new HashSet<>()).add(new Node(equation.get(1), values[i]));
+		=> graph.computeIfAbsent(equation.get(1), k -> new HashSet<>()).add(new Node(equation.get(0), 1 / values[i]));
+	
+	
+给一个（二维）数组， 比如： [[1,3],[3,0,1],[2],[0]] ，然后告诉说数组的值是为某个点/房间的号码等等，已经他们之间有某种关系  ====> 考虑转换为Graph的问题
+	- KeysAndRooms.java
+	- FlowerPlantingWithNoAdjacent.java， etc.
+	- EvaluateDivision.java
+	- AccountsMerge.java
+	- 对于某些二维数组，题目中并未指明其为Graph的结构，这时候考虑很多 corner case ===> SequenceReconstruction.java
+	
+	- 注意用二维数组（relations）描述的只是边，不在relations不代表该点不存在，只是它们是“孤立点” ===> ParallelCourses.java
+
+
+对有些涉及到（多个）连通问题，虽然没有明确说明是图，给的也不是二维数组， ===> 也需要考虑Graph的情况	
+	- SimiliarStringGroups.java
+	
+	
+另类判断是否需要Visit  ==> NetworkDelayTime.java
+- 看边是否Visited ===> ReconstructItinerary.java  ==> 考虑一边遍历一边删边
+	
+
+额外构建图节点 （带Weight） 
+	- EvaluateDivision.java
+	- NetworkDelayTime.java
+
+数据结构选择重要性： 自定义 OR Java defined object, e.g. Map
+	- EvaluateDivision.java
+	- PathWithMaximumMinimumValue.java
+
+对有些判断路径有无的，尤其是只需要判断其中一条就行的，注意！！！return true/false的时机
+	- PathWithMaximumMinimumValue.java
+	- IsGraphBipartite.java
+	
+判断环 ==> GraphValidTree.java
+
+图的BFS/DFS ===> CloneGraph.java
+
+
+BFS的话是先Node,然后其“所有Adjacent”点一遍，然后从其中的一个adj再开始上述过程，以此类推
+DFS的话是先Node, 紧接着Child,然后child的child,直到退出递归条件，再返回重新上述过程，以此类推
+	- 有return的话，每次return回一个需要的结果
+	
+
+	
+	
+	
+Definition:
+- 连通图：	        在无向图中，若任意两个顶点vivi与vjvj都有路径相通，则称该无向图为连通图。
+- 强连通图：	在有向图中，若任意两个顶点vivi与vjvj都有路径相通，则称该有向图为强连通图。
+- 连通网：	在连通图中，若图的边具有一定的意义，每一条边都对应着一个数，称为权；权代表着连接连个顶点的代价，称这种连通图叫做连通网。
+- 生成树：	一个连通图的生成树是指一个连通子图，它含有图中全部n个顶点，但只有足以构成一棵树的n-1条边。一颗有n个顶点的生成树有且仅有n-1条边，如果生成树中再添加一条边，则必定成环。
+- 最小生成树：  在连通网的所有生成树中，所有边的代价和最小的生成树，称为最小生成树。 
+-  连通分量：    无向图 G的一个极大连通子图称为 G的一个连通分量（或连通分支）。连通图只有一个连通分量，即其自身；非连通的无向图有多个连通分量。
+-  强连通图：     有向图 G=(V,E) 中，若对于V中任意两个不同的顶点 x和 y，都存在从x到 y以及从 y到 x的路径，则称 G是强连通图。相应地有强连通分量的概念。强连通图只有一个强连通分量，即是其自身；非强连通的有向图有多个强连分量。
+-  单向连通图：设G=<V,E>是有向图，如果u->v意味着图G至多包含一条从u到v的简单路径，则图G为单连通图。
+-  弱连通图：    将有向图的所有的有向边替换为无向边，所得到的图称为原图的基图。如果一个有向图的基图是连通图，则有向图是弱连通图。
+-  初级通路：通路中所有的顶点互不相同。初级通路必为简单通路，但反之不真。
+
+!!!!- a生成树：	一个连通图的生成树是指一个连通子图，它含有图中全部n个顶点，但只有足以构成一棵树的n-1条边。一颗有n个顶点的生成树有且仅有n-1条边，如果生成树中再添加一条边，则必定成环。
+- Valid Tree: 1) 无环；  2） fully connected ==> 即对N条边，肯定且只能有  n - 1条边   ====> GraphValidTree.java
+- N-1是前提，但 n-1不代表无环， 有环时则肯定存在孤立的数/点（即不是fully connected）
+
+BINARY SEARCH TREE: （inorder的结果是已排序的 ！！！）
+- The LEFT subtree of a node contains only nodes with keys LESS than the node's key (IF EQUAL, THEN NOT).
+- The RIGHT subtree of a node contains only nodes with keys GREATER than the node's key (IF EQUAL, THEN NOT).
+- The LEFT and RIGHT subtree each must also be a binary search tree. => RECURSIVE (in nature) => ValidateBST.java
+- EMPTY or a SINGLE node is a valid BST itself.
