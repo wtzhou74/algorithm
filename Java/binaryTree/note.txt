@@ -1,6 +1,0 @@
-SerializeAndDeserializeBinaryTree
-- StringTokenizer() - bring string into tokens.
-- Serialize: level-Order => iterative solution => REMEMBER assign NULL to empty node
-- deserialize: queue => iterative solution
-
-Postorder (left-right-root) is REVERSE of (root-right-left) => reusing PreOrder algorithm

@@ -1,7 +1,0 @@
-In general, we use a data structure of STACK or QUEUE, which replaces the role of the system call stack during the process of recursion. 
-
-To convert a recursion approach to an iteration one, we could perform the following two steps:
-- We use a stack or queue data structure within the function, to replace the role of the system call stack. (Chose data structure - STACK or QUEUE)
-	At each occurrence of recursion, we simply push the parameters as a new element into the data structure that we created, instead of invoking a recursion.
-- In addition, we create a loop over the data structure that we created before. The chain invocation 
-	of recursion would then be replaced with the iteration within the loop. (LOOP)
