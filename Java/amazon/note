@@ -1,6 +1,0 @@
-Collections.sort()  ==> O(NlgN)  \\\   PriorityQueue的sort是 O（lgN）, 所以 offer/poll操作就是 lgN
-
-queue.remove() ==> O(1) 跟 poll() 一样， 但是  remove(Object) ==> 删除指定元素 O（N）
-
-Bit operation
-	===> PrisonCellsAfterNDays.java
